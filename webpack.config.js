@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+
 module.exports = {
     entry: ["webpack/hot/dev-server", path.resolve(__dirname, './src/index.js')],
     output: {

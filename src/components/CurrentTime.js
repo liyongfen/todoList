@@ -1,6 +1,5 @@
 "use strict"
 require('../styles/header.css');
-
 import React from "react";
 import TimeUtils from "../core/utils/TimeUtils.js"
 
