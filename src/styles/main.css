@@ -1,0 +1,28 @@
+a,b,big,body,dd,del,div,dl,dt,em,form,h1,h2,h3,h4,h5,h6,html,i,iframe,img,ins,label,li,ol,p,pre,small,span,strong,u,ul,html,body
+{
+	margin:0;
+	padding:0;
+}
+a{ 
+	text-decoration:none;
+}
+img{ 
+	border:none;
+}
+ul,ol{ 
+	list-style:none;
+}
+body{ 
+	font-family:"微软雅黑", "宋体";
+	background-color: #ccc;
+}
+/*content*/
+.content{
+	width:960px;
+	height:630px;
+	background-color:#fff;
+	margin:0 auto;
+	position: relative;
+}
+
+/***/

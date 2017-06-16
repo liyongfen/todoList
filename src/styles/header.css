@@ -1,0 +1,31 @@
+.header{
+	height: 80px;
+    border-bottom: 1px solid #4878e6;
+}
+.header-title{
+    font-size: 60px;
+    font-weight: bold;
+    color: #333;
+    margin-left: 20px;
+    float: left;
+}
+.header-title-sub{
+    color: #4878e6;
+}
+.header-username-time{
+	float: right;
+	margin-right: 20px;
+	font-size: 20px;
+
+	padding-top: 12px;
+	text-align:right;
+}
+.header-username{
+	font-family:"MV Boli";
+}
+.header-username-sub{
+	padding-left:10px;
+}
+.header-current-time{
+	font-size: 15px;
+}
