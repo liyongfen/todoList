@@ -1,0 +1,29 @@
+.todo-header{
+	padding:8px 48px 8px 16px;
+	border:2px solid #acdafb;
+	border-bottom:none;
+	background-color:#9ed4f8;
+	cursor:pointer;
+
+}
+.todo-header-title{
+font-size:14px;
+}
+.todo-header-time{
+
+}
+.todo-desc{
+	border:2px solid #acdafb;
+	background-color:#9ed4f8;
+	padding:16px 0 16px 16px;
+	display:none;
+	color:#fff;
+	transition: all .3s;
+	-moz-transition: all .3s;
+	-webkit-transition: all .3s;
+	-o-transition:all .3s;
+
+}
+.todo-desc-show{
+	display:block;
+}
