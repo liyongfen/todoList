@@ -39,17 +39,7 @@ class Search extends React.Component{
 	}
 	handleSearch(e){
 		var searchdata = this.props.form.getFieldsValue();
-		var flag;
-		for(var key in searchdata){
-			if(_.isEmpty(searchdata[key]) ||_.isNull(searchdata[key]) ||_.isUndefined(searchdata[key])){
-				flag = true;
-				continue;
-			}else{
-				flag = false;
-				break;
-			}
-		}
-		if(!flag && _.isFunction(this.props._SearchTodoLists)){
+		if(_.isFunction(this.props._SearchTodoLists)){
 			this.props._SearchTodoLists(e,searchdata);
 		}	
 	}
@@ -73,9 +63,9 @@ class Search extends React.Component{
 							<FormItem  {...formItemLayout} label="活动状态">
 								{getFieldDecorator('status',{initialValue:''})(
 									<Select allowClear={true} onChange={this.onChangeStatus.bind(this)}>
-										<Option value="1">将要执行</Option>
-										<Option value="2">已经执行</Option>
-										<Option value="0">搁置状态</Option>
+										<Option value="0">将要执行</Option>
+										<Option value="1">已经执行</Option>
+										<Option value="2">搁置状态</Option>
 									</Select>
 								)}
 							</FormItem>

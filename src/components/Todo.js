@@ -77,6 +77,7 @@ class Todo extends React.Component{
 				<p className="todo-header" onClick={that.handleClick.bind(that,value.id)}>
 					<Icon type={todoListStyle[value.id].arrowIcon}/><span className="todo-header-title">  {value.header}</span>
 					<span className="todo-header-time"><Icon type="clock-circle-o"/>{value.time}</span>
+					<span>重要性:{value.importance}  状态:{value.status}  类型:{value.type}</span>
 				</p>
 				<p className={todoListStyle[value.id].todoDesc}>{value.desc}</p>
 				<p>
