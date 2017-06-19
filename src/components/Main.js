@@ -5,33 +5,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';  
 import {connect} from 'react-redux';
 import propTypes from 'prop-types';
-import { Button,DatePicker,Icon ,Badge} from 'antd';  
+import { Button,DatePicker,Icon ,Badge,notification} from 'antd';  
 
 import Header from './Header.js';
 import Todo from './Todo.js';
 import TodoModel from './TodoModel.js';
 import Search from './Search.js';
-import {addOneAction, removeOneAction,loadInitialDatas,loadRemoveOneTodo,loadAddOneTodo} from '../actions/mainaction';  
-
+import {loadInitialDatas,loadRemoveOneTodo,loadAddOneTodo,loadSearchTodos} from '../actions/mainaction';  
 
 var ButtonGroup = Button.Group;
+
 var mapStateToProps= function(state){
-	return{value: state.count,todoListDatas:state.todoListDatas}
+	return{todoListDatas:state.todoListDatas}
 }
 
 class App extends React.Component{
 	constructor(props){
 		super(props);
-		this.state = {data:{visible:false,todo:{header:'',desc:'',type:'0',importance:'0'},title:""}};
-		this.onIncreaseClick = this.onIncreaseClick.bind(this);
-		this.onDecreaseClick = this.onDecreaseClick.bind(this);
+		this.state = {data:{visible:false,
+			todo:{header:'',status:null,desc:'',type:'schedule',importance:'0'},title:""}
+		};
 	}
-	onIncreaseClick(){
-		this.props.dispatch(addOneAction(this.props.value));
-	}
-	onDecreaseClick(){
-		this.props.dispatch(removeOneAction(this.props.value));
-	}
+
 	_DelTodo(e,id){
 		loadRemoveOneTodo(this.props.dispatch,"",id);
 	}
@@ -41,18 +36,29 @@ class App extends React.Component{
 		this.state.data.title = "编辑活动";
 		this.state.data.visible = true;
 		this.setState({data:this.state.data});
+
 	}
 	_getAddModel(e,visible){
 		this.state.data.visible = visible;
 		this.state.data.title = "新建活动";
-
-		this.state.data.todo = {header:'',desc:'',type:'0',importance:'0',time:"2017-06-12 12:12:12"}
+		this.state.data.todo = {header:'',desc:'',status:null,type:'schedule',importance:'0',time:"2017-06-12 12:12:12"}
 		this.setState({data:this.state.data});
 	}
-	_AddTodo(e,addtodo){
+	_AddTodo(e,addtodo,isadd){
 		this.state.data.visible = false;
 		this.setState({data:this.state.data});
 		loadAddOneTodo(this.props.dispatch,"",addtodo);
+		var message = '修改成功！';
+		if(isadd==="新建活动"){
+			message = '添加成功！'
+		}
+		notification.success({
+			message: message,
+		    icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
+		});
+	}
+	_SearchTodoLists(e,searchdata){
+		loadSearchTodos(this.props.dispatch,"",searchdata);
 	}
 	componentDidMount(){
     	loadInitialDatas(this.props.dispatch,"");
@@ -60,19 +66,13 @@ class App extends React.Component{
 
 	render(){
 		var {todoListDatas} = this.props;
-		var value = this.props.value|0;
 		return (
 			<div className="content">
 				<Header />
 				<div className="main">
-					<Search _getAddModel={this._getAddModel.bind(this)}/>
+					<Search _getAddModel={this._getAddModel.bind(this)} _SearchTodoLists={this._SearchTodoLists.bind(this)}/>
 					<div className="main-logo"></div>
 					<Todo todoListDatas={todoListDatas} _DelTodo={this._DelTodo.bind(this)} _EditTodo={this._EditTodo.bind(this)} />
-					<p>{value}</p>  
-					<ButtonGroup>
-			          <Button type="primary" onClick={this.onIncreaseClick}>+1</Button>
-			          <Button type="primary" onClick={this.onDecreaseClick}>-1</Button>
-			        </ButtonGroup>
 				</div>
 				<TodoModel data={this.state.data}  _AddTodo={this._AddTodo.bind(this)}/>
 				<div className="footer"></div>
@@ -82,7 +82,6 @@ class App extends React.Component{
 }
 
 App.propTypes = {  
-    value: propTypes.number.isRequired,
     filterData:propTypes.array   
 }
 

@@ -1,6 +1,4 @@
 
-	
-
 var TimeUtils ={
 	getCurrentTime(separator){
 		//获取当前日期

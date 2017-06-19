@@ -6,10 +6,10 @@ import TimeUtils from "../core/utils/TimeUtils.js"
 class CurrentTime extends React.Component{
 	constructor(props){
 		super(props);
-		this.state = {getCurrentTime:TimeUtils.getCurrentTime('/')};
+		this.state = {getCurrentTime:TimeUtils.getCurrentTime('-')};
 	}
 	componentDidMount(){
-		this.timerID = setInterval(() =>{this.setState({getCurrentTime:TimeUtils.getCurrentTime('/')})},1000);
+		this.timerID = setInterval(() =>{this.setState({getCurrentTime:TimeUtils.getCurrentTime('-')})},1000);
 	}
 	componentWillUnmount(){
 		clearInterval(this.timerID);

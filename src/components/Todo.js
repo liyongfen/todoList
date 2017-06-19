@@ -12,7 +12,7 @@ class Todo extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			todoListStyle:[],modeal:{visible:false,modelHeader:"",id:null}
+			todoListStyle:[],model:{visible:false,modelHeader:"",id:null}
 		};
 	}
 	handleClick(id,e){
@@ -34,32 +34,32 @@ class Todo extends React.Component{
 		var data = this.props.todoListDatas;
 		for(let i = 0, j = data.length; i < j; i++){
 			if(id == data[i].id){
-				this.state.modeal.modelHeader=data[i].header;
+				this.state.model.modelHeader=data[i].header;
 				break;
 			}
 		}
-		this.state.modeal.id = id;
-		this.state.modeal.visible = true;
-		this.setState({modeal:this.state.modeal});
+		this.state.model.id = id;
+		this.state.model.visible = true;
+		this.setState({model:this.state.model});
 	}
 	handleOk(e){
 		if(_.isFunction(this.props._DelTodo)){
-            this.props._DelTodo(e,this.state.modeal.id);
+            this.props._DelTodo(e,this.state.model.id);
         }
-		this.state.modeal.visible = false;
+		this.state.model.visible = false;
 		notification.success({
 			message: '删除成功！',
 		    icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
 		});
-	    this.setState({modeal:this.state.modeal});
+	    this.setState({model:this.state.model});
 	}
 	handleCancel(e){
-	    this.state.modeal.visible = false;
-	    this.setState({modeal:this.state.modeal});
+	    this.state.model.visible = false;
+	    this.setState({model:this.state.model});
 	}
 	showModal(){
-    	this.state.modeal.visible = true;
-    	this.setState({modeal:this.state.modeal});
+    	this.state.model.visible = true;
+    	this.setState({model:this.state.model});
  	}
 	render(){
 		var todoListArr = [];
@@ -90,10 +90,10 @@ class Todo extends React.Component{
 				{todoListArr}
 				<Modal
 			        title="删除活动"
-			        visible={this.state.modeal.visible}
+			        visible={this.state.model.visible}
 			        onOk={this.handleOk.bind(this)}
 			        onCancel={this.handleCancel.bind(this)}>
-			        <p>确定删除活动“{this.state.modeal.modelHeader}”?</p>
+			        <p>确定删除活动“{this.state.model.modelHeader}”?</p>
 		        </Modal>
 			</div>
 		);
