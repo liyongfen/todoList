@@ -5,16 +5,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';  
 import {connect} from 'react-redux';
 import propTypes from 'prop-types';
-import { Button,DatePicker,Icon ,Badge,notification} from 'antd';  
+import {Icon,notification,Row,Col} from 'antd';  
 
 import Header from './Header.js';
 import Footer from './Footer.js';
 import Todo from './Todo.js';
 import TodoModel from './TodoModel.js';
 import Search from './Search.js';
+import TodoLeft from './TodoLeft.js';
 import {loadInitialDatas,loadRemoveOneTodo,loadAddOneTodo,loadSearchTodos} from '../actions/mainaction';  
-
-var ButtonGroup = Button.Group;
 
 var mapStateToProps= function(state){
 	return{todoListDatas:state.todoListDatas}
@@ -70,10 +69,16 @@ class App extends React.Component{
 		return (
 			<div className="content">
 				<Header />
+				<Search _getAddModel={this._getAddModel.bind(this)} _SearchTodoLists={this._SearchTodoLists.bind(this)}/>
 				<div className="main">
-					<Search _getAddModel={this._getAddModel.bind(this)} _SearchTodoLists={this._SearchTodoLists.bind(this)}/>
-					<div className="main-logo"></div>
-					<Todo todoListDatas={todoListDatas} _DelTodo={this._DelTodo.bind(this)} _EditTodo={this._EditTodo.bind(this)} />
+					<Row>
+						<Col span={10}>
+							<TodoLeft />
+						</Col>
+						<Col span={14}>
+							<Todo todoListDatas={todoListDatas} _DelTodo={this._DelTodo.bind(this)} _EditTodo={this._EditTodo.bind(this)} />
+						</Col>
+					</Row>
 				</div>
 				<TodoModel data={this.state.data}  _AddTodo={this._AddTodo.bind(this)}/>
 				<Footer />

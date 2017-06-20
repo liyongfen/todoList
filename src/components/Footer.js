@@ -11,7 +11,7 @@ class Footer extends React.Component{
 	render(){
 		return (
 			<div className="footer">
-				<p className="footer-info">版权所有© 武汉理工大学  维护：武汉理工大学网络信息中心</p>
+				<p className="footer-info">Copyright &copy; 2015-2017  武汉xx科技有限公司 鄂网文[2014]100-100号 鄂ICP证100000号</p>
 				<Row>
 					<Col span={5} className="todo-color-one"></Col>
 					<Col span={5} className="todo-color-two"></Col>

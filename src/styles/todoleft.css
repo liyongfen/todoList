@@ -1,0 +1,17 @@
+.todo-left-img{
+	width:110px;
+	height: 110px;
+	vertical-align:middle;
+}
+.todo-left{
+	padding: 100px 20px;
+}
+.todo-left-block{
+	padding: 20px 0;
+}
+.todo-left-connector{
+	font-size:30px;
+	vertical-align:middle;
+	color:#aaa;
+	margin:0 20px;
+}
