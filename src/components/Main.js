@@ -8,6 +8,7 @@ import propTypes from 'prop-types';
 import { Button,DatePicker,Icon ,Badge,notification} from 'antd';  
 
 import Header from './Header.js';
+import Footer from './Footer.js';
 import Todo from './Todo.js';
 import TodoModel from './TodoModel.js';
 import Search from './Search.js';
@@ -75,7 +76,7 @@ class App extends React.Component{
 					<Todo todoListDatas={todoListDatas} _DelTodo={this._DelTodo.bind(this)} _EditTodo={this._EditTodo.bind(this)} />
 				</div>
 				<TodoModel data={this.state.data}  _AddTodo={this._AddTodo.bind(this)}/>
-				<div className="footer"></div>
+				<Footer />
 			</div>
 		);
 	}

@@ -101,7 +101,7 @@ class TodoModel extends React.Component{
 						<FormItem {...formItemLayout} label="类型">
 							{getFieldDecorator('type',  {initialValue:data.todo.type||"schedule",rules: [{required: true, message: '请选择类型!'}]})(
 					            <Select onChange={this.onChangeType.bind(this)}>
-					              <Option value="schedule">日程<Icon type="check-square"/></Option>
+					              <Option value="schedule">日程<Icon type="check-square-o"/></Option>
 					              <Option value="birthday">生日<Icon type="gift"/></Option>
 					              <Option value="memorial">纪念日<Icon type="heart-o"/>  </Option>
 					              <Option value="countdown">倒数日<Icon type="calendar"/></Option>

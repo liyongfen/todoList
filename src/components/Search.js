@@ -1,5 +1,5 @@
 "use strict"
-require('../styles/header.css');
+import '../styles/header.css';
 import React from "react";
 import _ from 'lodash';
 import { Modal, Button, Input, DatePicker,Icon,Form,Row,Col,Select} from 'antd';
@@ -74,7 +74,7 @@ class Search extends React.Component{
 							<FormItem {...formItemLayout} label="活动类型">
 								{getFieldDecorator('type',{initialValue:''})(
 									<Select allowClear={true} onChange={this.onChangeType.bind(this)}>
-										<Option value="schedule">日程<Icon type="check-square"/></Option>
+										<Option value="schedule">日程<Icon type="check-square-o"/></Option>
 							            <Option value="birthday">生日<Icon type="gift"/></Option>
 							            <Option value="memorial">纪念日<Icon type="heart-o"/>  </Option>
 							            <Option value="countdown">倒数日<Icon type="calendar"/></Option>

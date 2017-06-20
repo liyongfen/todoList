@@ -1,7 +1,7 @@
 "use strict"
 
 import React from "react";
-import {Button, Icon,Modal,notification } from 'antd';
+import {Button, Icon,Modal,notification,Badge } from 'antd';
 
 import 'antd/dist/antd.css'; 
 import '../styles/todo.css';
@@ -18,10 +18,10 @@ class Todo extends React.Component{
 	handleClick(id,e){
 		if(this.state.todoListStyle[id].arrowIcon==="right"){
 			this.state.todoListStyle[id].arrowIcon = "down";
-			this.state.todoListStyle[id].todoDesc = "todo-desc todo-desc-show"; 
+			this.state.todoListStyle[id].todoDesc = " todo-desc-show"; 
 		}else{
 			this.state.todoListStyle[id].arrowIcon = "right";
-			this.state.todoListStyle[id].todoDesc ="todo-desc"; 
+			this.state.todoListStyle[id].todoDesc =" todo-desc-hide"; 
 		}
 		this.setState({todoListStyle:this.state.todoListStyle});
 	}
@@ -67,23 +67,50 @@ class Todo extends React.Component{
 		var todoListStyle = this.state.todoListStyle;
 		todoListDatas.forEach(function(value,index){
 			if(!todoListStyle[value.id]){
-  				todoListStyle[value.id]={arrowIcon:"right",todoDesc:"todo-desc"};
+  				todoListStyle[value.id]={arrowIcon:"right",todoDesc:" todo-desc-hide"};
   			}
 		});
 		var that = this;
+
 		todoListDatas.forEach(function(value,index){
+			var typeIcon = "";
+			switch(value.type){
+				case "schedule":typeIcon="check-square-o";break;
+				case "birthday":typeIcon="gift";break;
+				case "memorial":typeIcon="heart-o";break;
+				case "countdown":typeIcon="calendar";break;
+				default:break;
+
+			}
+			var statusStyle= "";
+			switch(value.status){
+				case "0":statusStyle = " todo-status-willdo ";break;
+				case "1":statusStyle = " todo-status-doed ";break;
+				case "2":statusStyle = " todo-status-givepu ";break;
+				default:break;
+			}
+			var importStyle= "todo-improt-badge-hide";
+			if(value.importance=="0"){
+				importStyle = " todo-improt-badge ";
+			}
+			var statusHeader = "todo-header" + statusStyle;
+			var statusDesc = "todo-desc " + statusStyle + todoListStyle[value.id].todoDesc;
+			var statusContro = "todo-contro " + statusStyle;
 			todoListArr.push(
-			<div key={index}>
-				<p className="todo-header" onClick={that.handleClick.bind(that,value.id)}>
+			<div key={index} style={{marginBottom:15,clear:'both'}}>
+				<p className={statusHeader} onClick={that.handleClick.bind(that,value.id)}>
 					<Icon type={todoListStyle[value.id].arrowIcon}/><span className="todo-header-title">  {value.header}</span>
-					<span className="todo-header-time"><Icon type="clock-circle-o"/>{value.time}</span>
-					<span>重要性:{value.importance}  状态:{value.status}  类型:{value.type}</span>
+					<span className="todo-header-time">
+						<Icon type="clock-circle-o"/>{value.time}<Icon type={typeIcon} style={{paddingLeft:16}}/>
+					</span>
+					<span className={importStyle}><Badge count={"重要"}></Badge></span>
 				</p>
-				<p className={todoListStyle[value.id].todoDesc}>{value.desc}</p>
-				<p>
-					<Button type="primary" onClick={that.handleEdit.bind(that,value)}>编辑</Button>
+				<p className={statusDesc}>{value.desc}</p>
+				<p className={statusContro}>
+					<Button type="primary" className ="todo-edit-btn" onClick={that.handleEdit.bind(that,value)}>编辑</Button>
 					<Button type="danger" onClick={that.handleDelete.bind(that,value.id)}>删除</Button>
 				</p>
+				
 			</div>);
 		});
 		return (

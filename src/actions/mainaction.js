@@ -10,14 +10,11 @@ var todoListDatas = [
 	{id:2,header:"户外健身2",status:"1",type:"birthday",desc:"5公里短跑，20个俯卧撑，10个引体向上，50个仰卧起坐",time:"2017-04-13 20:13:12",importance:"1"},
 	{id:3,header:"户外健身3",status:"2",type:"memorial",desc:"5公里短跑，20个俯卧撑，10个引体向上，50个仰卧起坐",time:"2017-07-14 20:13:12",importance:"0"},
 	{id:4,header:"户外健身4",status:"0",type:"countdown",desc:"5公里短跑，20个俯卧撑，10个引体向上，50个仰卧起坐",time:"2017-06-15 20:13:12",importance:"1"},
-    {id:5,header:"户外健身5",status:"1",type:"schedule",desc:"5公里短跑，20个俯卧撑，10个引体向上，50个仰卧起坐",time:"2016-09-26 19:30:12",importance:"0"},
-    {id:6,header:"户外健身6",status:"1",type:"birthday",desc:"5公里短跑，20个俯卧撑，10个引体向上，50个仰卧起坐",time:"2017-08-13 20:13:12",importance:"1"},
-    {id:7,header:"户外健身7",status:"2",type:"memorial",desc:"5公里短跑，20个俯卧撑，10个引体向上，50个仰卧起坐",time:"2017-09-14 20:13:12",importance:"0"},
-    {id:8,header:"户外健身8",status:"0",type:"countdown",desc:"5公里短跑，20个俯卧撑，10个引体向上，50个仰卧起坐",time:"2017-07-15 20:13:12",importance:"1"}
+    {id:5,header:"户外健身5",status:"1",type:"schedule",desc:"5公里短跑，20个俯卧撑，10个引体向上，50个仰卧起坐",time:"2016-09-26 19:30:12",importance:"0"}
 ];
 
 function sortDatas(Arr){
-
+    
 }
 //得到列表的初始值
 export function initialDatas(todoListDatas) {

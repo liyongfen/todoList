@@ -1,29 +1,57 @@
 .todo-header{
-	padding:8px 48px 8px 16px;
-	border:2px solid #acdafb;
-	border-bottom:none;
-	background-color:#9ed4f8;
+	padding:8px 16px;
+	border:2px solid #d2eafb;
+	background-color:#ecf6fd;
 	cursor:pointer;
-
+	position: relative;
 }
 .todo-header-title{
-font-size:14px;
+	font-size:14px;
 }
 .todo-header-time{
-
+	float:right;
 }
 .todo-desc{
-	border:2px solid #acdafb;
-	background-color:#9ed4f8;
 	padding:16px 0 16px 16px;
-	display:none;
-	color:#fff;
-	transition: all .3s;
-	-moz-transition: all .3s;
-	-webkit-transition: all .3s;
-	-o-transition:all .3s;
+	border:2px solid #d2eafb;
+	background-color: #ecf6fd;
+	border-bottom: none;
+/* 	transition: all .3s;
+-moz-transition: all .3s;
+-webkit-transition: all .3s;
+-o-transition:all .3s; */
 
+}
+.todo-desc-hide{
+	display:none;
 }
 .todo-desc-show{
 	display:block;
+}
+.todo-status-willdo{
+	border:1px solid #d2eafb;
+	background-color:#ecf6fd;
+}
+.todo-status-doed{
+	border:1px solid #fcdbd9;
+	background-color:#fef0ef;
+}
+.todo-status-givepu{
+	border:1px solid #d9d9d9;
+	background-color:#f7f7f7;
+}
+.todo-contro{
+	padding:8px 16px;
+}
+.todo-edit-btn{
+	margin-right: 5px;
+}
+.todo-improt-badge{
+    position: absolute;
+    right: -18px;
+    top: -14px;
+    display: inline;
+}
+.todo-improt-badge-hide{
+	display: none;
 }

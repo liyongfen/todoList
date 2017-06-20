@@ -1,0 +1,24 @@
+.todo-color-one{
+	border-bottom:2px solid #e3a244;
+}
+.todo-color-two{
+	border-bottom:2px solid #d15d33;
+}
+.todo-color-three{
+	border-bottom:2px solid #9ec22b;
+}
+.todo-color-frou{
+	border-bottom:2px solid #538bac;
+}
+.todo-color-five{
+	border-bottom:2px solid #73502a;
+}
+.footer{
+	clear: both;
+	overflow:hidden;
+	border-top:1px solid #4878e6
+}
+.footer-info{
+	padding:10px 0;
+	text-align:center;
+}
