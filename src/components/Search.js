@@ -23,22 +23,14 @@ class Search extends React.Component{
 
 	
 	}
-	showModal(e){
+	addModal(e){
 		if(_.isFunction(this.props._getAddModel)){
             this.props._getAddModel(e,true);
         }
 	}
-	onChangeImpro(){
-
-	}
-	onChangeStatus(){
-
-	}
-	onChangeType(){
-
-	}
 	handleSearch(e){
 		var searchdata = this.props.form.getFieldsValue();
+		console.log("searchdata:",searchdata);
 		if(_.isFunction(this.props._SearchTodoLists)){
 			this.props._SearchTodoLists(e,searchdata);
 		}	
@@ -52,7 +44,7 @@ class Search extends React.Component{
 						<Col span="4">
 							<FormItem {...formItemLayout} label="重要性">
 								{getFieldDecorator('importance',{initialValue:''})(
-									<Select allowClear={true} onChange={this.onChangeImpro.bind(this)}>
+									<Select allowClear={true}>
 										<Option value="0">重要活动</Option>
 										<Option value="1">一般活动</Option>
 									</Select>
@@ -62,7 +54,7 @@ class Search extends React.Component{
 						<Col span="4">
 							<FormItem  {...formItemLayout} label="活动状态">
 								{getFieldDecorator('status',{initialValue:''})(
-									<Select allowClear={true} onChange={this.onChangeStatus.bind(this)}>
+									<Select allowClear={true}>
 										<Option value="0">将要执行</Option>
 										<Option value="1">已经执行</Option>
 										<Option value="2">搁置状态</Option>
@@ -73,7 +65,7 @@ class Search extends React.Component{
 						<Col span="4">
 							<FormItem {...formItemLayout} label="活动类型">
 								{getFieldDecorator('type',{initialValue:''})(
-									<Select allowClear={true} onChange={this.onChangeType.bind(this)}>
+									<Select allowClear={true}>
 										<Option value="schedule">日程<Icon type="check-square-o"/></Option>
 							            <Option value="birthday">生日<Icon type="gift"/></Option>
 							            <Option value="memorial">纪念日<Icon type="heart-o"/>  </Option>
@@ -93,7 +85,7 @@ class Search extends React.Component{
 							<Button type="primary" style={{marginLeft:15}} onClick={this.handleSearch.bind(this)}>查询</Button>
 						</Col>
 						<Col span="2">
-							<Button type="primary" style={{marginLeft:7}} onClick={this.showModal.bind(this)}>添加</Button>
+							<Button type="primary" style={{marginLeft:7}} onClick={this.addModal.bind(this)}>添加</Button>
 						</Col>
 					</Row>
 				</Form>

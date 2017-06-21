@@ -5,6 +5,7 @@ export const TODOLIST_DATA = 'TODOLIST_DATA';
 export const REMOVE_ONETODO ='REMOVE_ONETODO';
 export const ADD_ONETODO = 'ADD_ONETODO';
 export const SEARCH_TODOS = 'SEARCH_TODOS';
+export const EDIT_ONETODO = 'EDIT_ONETODO';
 var todoListDatas = [
 	{id:1,header:"户外健身1",status:"0",type:"schedule",desc:"5公里短跑，20个俯卧撑，10个引体向上，50个仰卧起坐",time:"2017-06-06 19:59:51",importance:"0"},
 	{id:2,header:"户外健身2",status:"1",type:"birthday",desc:"5公里短跑，20个俯卧撑，10个引体向上，50个仰卧起坐",time:"2017-04-13 20:13:12",importance:"1"},
@@ -17,20 +18,22 @@ function sortDatas(Arr){
     
 }
 //得到列表的初始值
-export function initialDatas(todoListDatas) {
+export function initialDatas(todoListDatas,status) {
     return {
         type: TODOLIST_DATA,
+        status:status,
         todoListDatas: todoListDatas
     }
 }
 //
 export function loadInitialDatas(dispatch,url){
-	dispatch(initialDatas(todoListDatas));
+	dispatch(initialDatas(todoListDatas,1));
 }
 //删除一条记录
-export function removeOneTodo(todoListDatas) {
+export function removeOneTodo(todoListDatas,status) {
     return {
         type: REMOVE_ONETODO,
+        status:status,
         todoListDatas:todoListDatas
     };
 }
@@ -42,24 +45,45 @@ export function loadRemoveOneTodo(dispatch,url,id) {
 			break;
 		}
 	}
-	dispatch(removeOneTodo(todoListDatas));
+	dispatch(removeOneTodo(todoListDatas,1));
 }
 //添加一个活动
-export function addOneTodo(todoListDatas) {
+export function addOneTodo(todoListDatas,status) {
     return {
         type: ADD_ONETODO,
+        status:status,
         todoListDatas:todoListDatas
     };
 }
 export function loadAddOneTodo(dispatch,url,data) {
     data.id = todoListDatas[todoListDatas.length-1].id+1;
     todoListDatas.push(data);
-    dispatch(addOneTodo(todoListDatas));
+    dispatch(addOneTodo(todoListDatas,1));
 }
-//添加一个活动
-export function searchTodos(searchDatas) {
+//编辑一个活动
+export function editOneTodo(todoListDatas,status) {
+    return {
+        type: EDIT_ONETODO,
+        status:status,
+        todoListDatas:todoListDatas
+    };
+}
+export function loadEditOneTodo(dispatch,url,data) {
+    console.log("action:",data);
+    for(var i = 0, j = todoListDatas.length; i < j; i++){
+        if(todoListDatas[i].id == data.id){
+            todoListDatas[i] = data;
+            break;
+        }
+    }
+
+    dispatch(editOneTodo(todoListDatas,1));
+}
+//查询活动
+export function searchTodos(searchDatas,status) {
     return {
         type: SEARCH_TODOS,
+        status:status,
         todoListDatas:searchDatas
     };
 }
@@ -72,7 +96,7 @@ export function loadSearchTodos(dispatch,url,data) {
         }
     }
     if(_.isEmpty(data)){
-        dispatch(searchTodos(temp));
+        dispatch(searchTodos(temp,1));
     }else{
         for(var key in data){
             for (var i = 0; i < temp.length; i++) { 
@@ -90,6 +114,6 @@ export function loadSearchTodos(dispatch,url,data) {
             searchDatas = [];
         }
 
-        dispatch(searchTodos(temp));
+        dispatch(searchTodos(temp,1));
     }
 }

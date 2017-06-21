@@ -6,18 +6,21 @@
  * @param action 接收到的新指令
  */
 import assign from 'lodash/assign';
-import {TODOLIST_DATA,REMOVE_ONETODO,ADD_ONETODO,SEARCH_TODOS,
-	   removeOneTodo,initialDatas,addOneTodo,searchTodos} from '../actions/mainaction';
-const receiveActions = (state={todoListDatas:[]} , action = {type})=> {
+import {TODOLIST_DATA,REMOVE_ONETODO,ADD_ONETODO,EDIT_ONETODO,SEARCH_TODOS,
+	   removeOneTodo,initialDatas,addOneTodo,editOneTodo,searchTodos} from '../actions/mainaction';
+const receiveActions = (state={todoListDatas:[],status:0} , action = {type})=> {
+    console.log(action);
     switch (action.type) {
         case TODOLIST_DATA:      
-        	return assign({}, state, initialDatas(action.todoListDatas)); 
+        	return assign({}, state, initialDatas(action.todoListDatas,action.status)); 
         case REMOVE_ONETODO:      
-        	return assign({}, state, removeOneTodo(action.todoListDatas));
+        	return assign({}, state, removeOneTodo(action.todoListDatas,action.status));
         case ADD_ONETODO:      
-            return assign({}, state, addOneTodo(action.todoListDatas));
+            return assign({}, state, addOneTodo(action.todoListDatas,action.status));
+        case EDIT_ONETODO:      
+            return assign({}, state, editOneTodo(action.todoListDatas,action.status));
         case SEARCH_TODOS:      
-            return assign({}, state, searchTodos(action.todoListDatas));
+            return assign({}, state, searchTodos(action.todoListDatas,action.status));
         default:
             return state;
     }

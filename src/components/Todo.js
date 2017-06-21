@@ -47,10 +47,6 @@ class Todo extends React.Component{
             this.props._DelTodo(e,this.state.model.id);
         }
 		this.state.model.visible = false;
-		notification.success({
-			message: '删除成功！',
-		    icon: <Icon type="smile-circle" style={{ color: '#108ee9' }} />,
-		});
 	    this.setState({model:this.state.model});
 	}
 	handleCancel(e){
