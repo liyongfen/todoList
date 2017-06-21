@@ -27,7 +27,7 @@ class App extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {data:{newKey:'',visible:false,title:0,
-			todo:{id:0,header:'',status:'0',desc:'',type:'schedule',importance:'0'}
+			todo:{id:0,title:'',status:'0',desc:'',type:'schedule',importance:'0'}
 			}
 		};
 	}
@@ -45,7 +45,6 @@ class App extends React.Component{
 	_EditTodo(e,todo){
 		this.state.data.todo = todo;
 		this.state.data.visible = true;
-		this.state.data.newKey = TimeUtils.getCurrentTime('-');
 		this.state.data.title = 0;
 		this.setState({data:this.state.data});
 	}
@@ -66,7 +65,7 @@ class App extends React.Component{
 		this.state.data.title = 1;
 		this.state.data.visible = true;
 		this.state.data.newKey = TimeUtils.getCurrentTime('-');
-		this.state.data.todo = {id:0,header:'',desc:'',status:'0',type:'schedule',importance:'0',time:"2017-06-12 12:12:12"}
+		this.state.data.todo = {id:0,title:'',desc:'',status:'0',type:'schedule',importance:'0',time:"2017-06-12 12:12:12"}
 		this.setState({data:this.state.data});
 	}
 	_AddTodo(e,addtodo){

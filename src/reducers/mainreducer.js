@@ -9,7 +9,6 @@ import assign from 'lodash/assign';
 import {TODOLIST_DATA,REMOVE_ONETODO,ADD_ONETODO,EDIT_ONETODO,SEARCH_TODOS,
 	   removeOneTodo,initialDatas,addOneTodo,editOneTodo,searchTodos} from '../actions/mainaction';
 const receiveActions = (state={todoListDatas:[],status:0} , action = {type})=> {
-    console.log(action);
     switch (action.type) {
         case TODOLIST_DATA:      
         	return assign({}, state, initialDatas(action.todoListDatas,action.status)); 

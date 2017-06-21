@@ -34,7 +34,7 @@ class Todo extends React.Component{
 		var data = this.props.todoListDatas;
 		for(let i = 0, j = data.length; i < j; i++){
 			if(id == data[i].id){
-				this.state.model.modelHeader=data[i].header;
+				this.state.model.modelHeader=data[i].title;
 				break;
 			}
 		}
@@ -95,7 +95,7 @@ class Todo extends React.Component{
 			todoListArr.push(
 			<div key={index} style={{marginBottom:15,clear:'both'}}>
 				<p className={statusHeader} onClick={that.handleClick.bind(that,value.id)}>
-					<Icon type={todoListStyle[value.id].arrowIcon}/><span className="todo-header-title">  {value.header}</span>
+					<Icon type={todoListStyle[value.id].arrowIcon}/><span className="todo-header-title">  {value.title}</span>
 					<span className="todo-header-time">
 						<Icon type="clock-circle-o"/>{value.time}<Icon type={typeIcon} style={{paddingLeft:16}}/>
 					</span>

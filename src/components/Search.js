@@ -30,7 +30,7 @@ class Search extends React.Component{
 	}
 	handleSearch(e){
 		var searchdata = this.props.form.getFieldsValue();
-		console.log("searchdata:",searchdata);
+		//console.log("searchdata:",searchdata);
 		if(_.isFunction(this.props._SearchTodoLists)){
 			this.props._SearchTodoLists(e,searchdata);
 		}	

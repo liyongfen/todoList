@@ -26,7 +26,6 @@ class TodoModel extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {data:this.props.data};
-		console.log("ccc");
 	}
   	handleOk(e){
   		this.props.form.validateFields((err) => {
@@ -36,7 +35,6 @@ class TodoModel extends React.Component{
 	          	if(_.isFunction(this.props._AddTodo) && this.state.data.title==1){
             		this.props._AddTodo(e,todo);
         		 }else if(_.isFunction(this.props._EditModal) && this.state.data.title==0){
-        	 		console.log("ok:",todo);
         	 		this.props._EditModal(e,todo);
         	 }
 	        }
@@ -47,8 +45,7 @@ class TodoModel extends React.Component{
   		this.setState({data: this.state.data});
   	}
   	componentWillReceiveProps(nextProps){
-  		console.log("pppp");
-  		//this.setState({data:nextProps});
+  		this.setState({data:nextProps.data});
   	}
 	render(){
 		const { getFieldDecorator } = this.props.form;
@@ -57,10 +54,9 @@ class TodoModel extends React.Component{
 		if(data.title==0){
 			title="编辑活动"; 
 		}
-		console.log("modal:",data.todo);
 		return (
+			!data.visible ? null :
 			<Modal
-				//key = {data.newKey}
 		        title={title}
 		        visible={data.visible}
 		        onOk={this.handleOk.bind(this)}
@@ -74,7 +70,7 @@ class TodoModel extends React.Component{
 						)}
     				</FormItem>	
 					<FormItem {...formItemLayout} label="标题">
-						{getFieldDecorator('header', {initialValue:data.todo.header ||'',rules: [{ required: true, message: '请输入标题!'}]})(
+						{getFieldDecorator('title', {initialValue:data.todo.title ||'',rules: [{ required: true, message: '请输入标题!'}]})(
 							<Input/>
 						)}
     				</FormItem>	
